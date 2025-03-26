@@ -48,9 +48,11 @@ BEGIN
 		SELECT
 			cst_id,
 			cst_key,
+			-- Remove leading and trailing spaces from first and last names
 			TRIM(cst_firstname) AS cst_firstname,
 			TRIM(cst_lastname) AS cst_lastname,
 			CASE 
+			--  Normalize marital status values to readable format 
 				WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
 				WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
 				ELSE 'n/a'
